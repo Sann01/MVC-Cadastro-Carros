@@ -1,11 +1,9 @@
-    <h1>Bem-vindo ao NextCars</h1>
-    <form action="/carros" method="POST">
-        <input type="text" name="modelo" placeholder="Modelo:"/>
-        <input type="text" name="fabricante" placeholder="Fabricante:"/>
-        <input type="text" name="ano" placeholder="Ano:"/>
-        <input type="text" name="placa" placeholder="Placa:"/>
-        <input type="text" name="numeroRenavam" placeholder="Numero do Renavam:"/>
-        <button type="submit">Adicionar</button>
+<h1 style="display: flex;place-content: center;">O que deseja fazer?</h1>
+<div class="d-grid gap-2" style="display: flex; place-content: center;">
+    <form action="/cadastroCarro" method="get">
+        <button class="btn bg-dark" style="color:aliceblue; width: 90vw;" type="button" >Cadastrar Carros</button>
     </form>
-
-
+    <form action="/listar" method="get">
+        <button class="btn btn-primary" type="button" style="width: 90vw;" >Listar Carros</button>
+    </form>
+</div>

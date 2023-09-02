@@ -1,22 +1,42 @@
-const usuarioModel = require('../models/usuarioModel');
+const newUser = [];
+const usuarioModel = require('./layouts/default/usuarioModel.js');
 
-function getLogin(req, res) {
-    res.render('login');
+function getNewUser(req, res) {
+    res.render("layouts/default/login", { newUser });
 }
 
-async function auth(req, res){
-    const resp = await usuarioModel.auth(req.body.email, req.body.senha);
-    console.log(resp);
-    if(resp.length > 0){
-        req.session.usuario = {
-            id: resp[0].id,
-            email: resp[0].email
-        };
-        res.redirect('/carros');
-    } else {
-        console.log('Usuário ou senha inválidos');
-        res.redirect('/login');
+function msgErro(){
+    msgErro = ""; res.render("", {msgErro});
+}
+
+async function login(req, res){
+    const data = req.body;
+
+    const usuario = await usuarioModel.findOne({
+        atributer: ['nome', 'email', 'senha'],
+        where: {
+            email: data.email
+        }
+    });
+
+    if(user === null){
+        msgErro = "Credenciais incorretas"
+        res.render("login", {msgErro});
+    }
+    else if(!(await bcrypt.compare(data.senha, user.senha))){
+        msgErro = "Credenciais incorretas"
+        res.render("llogin", {msgErro});
+    }
+    else{
+        let token = jwt.sign({email: usuario.email}, process.env.SECRET, {expiresIn: '86400000'});
+    
+        req.session.token = token;
+        req.session.email = usuario.email;
+
+        res.redirect('/cadastro');
     }
 }
 
-module.exports = { getLogin, auth };
+
+
+module.exports = {getNewUser,login};

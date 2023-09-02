@@ -8,5 +8,6 @@ class Carro{
         this.numeroRenavam = numeroRenavam;
     } 
 } 
+
 module.exports = Carro;
     

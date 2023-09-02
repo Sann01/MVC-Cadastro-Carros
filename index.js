@@ -1,83 +1,87 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const session = require('express-session');
 //controllers
+const cadastroCarroController = require("./controller/cadastroCarroController");
+const cadastroController = require("./controller/cadastroController");
+const loginController = require("./controller/loginController");
 const homeController = require("./controller/homeController");
-
+const listarController = require("./controller/listarController");
 // models
-const carroModel = require("./models/carroModel");
-const usuarioModel = require("./models/usuarioModel");
-
+const addUser = require('./models/usuarioModel');
 
 const app = express();
-const port = 3000;
-
-
+const port = 7000;
+const bodyParser = require('body-parser');
+var path = require('path');
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true }));
+app.use(bodyParser.json())
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
-
+app.use(session({secret:'cadastrocarro'}))
+app.use(bodyParser.urlencoded({extended:true}));
 app.set('layouts', './layouts/default/index');
 
 app.listen(port,()=>{
     console.log("Server running on: https://localhost:" + port);
 });
-
+// gets
 app.get('/', (req, res) => {
-    res.redirect('/home'); 
+    res.redirect('/cadastro'); 
 });
 
-app.get('/home', (req, res) => {
+app.get('/cadastro',(req,res)=>{
+    app.set('layout','./layouts/default/cadastro');
+    cadastroController.getCadastroUsuario(req,res);
+})
+
+app.get('/cadastroCarro', (req, res) => {
+    app.set('layout','./layouts/default/cadastroCarro');
+    cadastroCarroController.getCadastroCarro(req,res);
+});
+
+app.get('/login',(req,res)=>{
+    app.set('layout','./layouts/default/login');
+    loginController.getLogin(req,res);
+})
+
+app.get('/home',(req,res)=>{
     app.set('layout','./layouts/default/home');
     homeController.getHome(req,res);
+})
+
+
+app.get('/listarCarro',(req,res)=>{
+    app.set('layout','./layouts/default/listar');
+    listarController.getListarCarro(req,res);
+    Carro.all({order:[['id','']]}).then(function(carros){
+        res.render("listar",{carros:carros});
+    })
+})
+
+app.get('/deletar/:id',(req,res)=>{
+    Carro.destroy({where:{'id':req.params.id}}).then(function(){
+        res.send("Carro deletado!")
+        res.redirect('./layouts/default/listar')
+    }).catch(function(erro){
+        res.send("Este carro nao existe!")
+    })
+    loginController.getLogin(req,res);
+})
+
+app.post('/cadastro', async (req, res) => {
+    cadastroController.cadastro(req, res);
 });
 
+app.post('/login', (req, res) => {
+    const { email, senha } = req.body;
 
 
-
-
-// app.set('layout', './layouts/default/index');
-
-
-// app.get('/login', (req, res) => {
-// app.set("layout", "./layouts/default/login");
-// usuarioController.getLogin(req, res);
-// });
-// app.use((req, res, next)=>{
-//     if(!req.session.user){
-//         if(req.originalUrl);
-// }
-// })
-// app.get("/", (req,res)=>{
-//     app.set("layout", "./layouts/default/welcome")
-//     res.render("welcome");
-// });
-// app.get("/cadastro", (req,res)=>{
-//     res.render("/");
-// });
-
-
-
-// (async () => {
-
-//     const database = require('./model/db');
-//     const Produto = require('./model/produtoModel');
-//     await database.sync();
-
-    // const novoProduto = await Produto.create({
-    //     placa:' ',
-    //     ano:'',
-    //     modelo:'',
-    //     fabricante:'',
-    //     numero_renavam:'',
-    //     imagem:''
-    // });     
-
-    // console.log(novoProduto);
-    //     const produtos = await Produto.findByPk(`${id}`);
-    //     console.log(produtos);
-    //     await produto.save();
-
-    //     await produto.destroy(`${id}`);
-
-// })();
+    if (email === 'usuario' && senha === 'senha') {
+        res.send('Login bem-sucedido');
+    } else {
+        res.send('Login falhou');
+    }
+});

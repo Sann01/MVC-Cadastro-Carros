@@ -4,9 +4,12 @@ const sequelize =  new Sequelize('cadastro_carros','root','vertrigo',{
     dialect: 'mysql'
 })
 sequelize.authenticate().then(function(){
-    console.log("conectado com o banco de dados")
+    console.log("Conectado com o banco de dados");
 }).catch(function(erro){
-    console.log("falha ao conectar ao banco de dados:" + erro)
+    console.log("Falha ao conectar com banco de dados:" + erro);
 })
 
-module.exports = sequelize;
+module.exports = {
+    Sequelize: Sequelize,
+    sequelize:sequelize 
+};

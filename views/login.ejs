@@ -1,16 +1,22 @@
 <div>
-    <h1>Faça seu login!</h1>
-    <form action="/login" method="POST">
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email">
+    <h1 style="display: flex;place-content: center;">Faça seu login!</h1>
+    <div class="div-form-cadastro" style="place-content: center; display: flex; ">
+    <form action="/home">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email:" required>
         </div>
-        <div>
-            <label for="password">Senha:</label>
-            <input type="password" name="senha">
+    
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input name="senha"  type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha:" required>
         </div>
-        <div>
-            <input type="submit" value="login">
+    
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label name="verSenha"  class="form-check-label" for="exampleCheck1">Ver senha</label>
         </div>
-    </form>
+    
+        <button type="submit" class="btn btn-primary">Entrar</button></form>
+    </div>
 </div>

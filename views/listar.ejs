@@ -1,1 +1,10 @@
-<button type="button" class="btn">Listar</button>
+<ul>
+    <% carros.forEach(function(carro){ %>
+        <%=carro.modelo%>
+        <%=carro.fabricante%>
+        <%=carro.ano%>
+        <%=carro.placa%>
+        <%=carro.imagem%>
+    <% }); %>
+    <a href="/deletar/{{id}}"><button type="button" class="btn btn-outline-danger">Deletar</button></a>
+</ul>
