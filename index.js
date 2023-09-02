@@ -81,7 +81,7 @@ app.post('/enviarCarro', function (req,res){
 app.get('/deletar/:id',(req,res)=>{
     Carro.destroy({where:{'id':req.params.id}}).then(function(){
         res.send("Carro deletado!")
-        res.redirect('./layouts/default/listar')
+        res.redirect('./layouts/default/mostrarCarros')
     }).catch(function(erro){
         res.send("Este carro nao existe!")
     })

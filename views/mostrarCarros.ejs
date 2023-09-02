@@ -1,7 +1,8 @@
 <div>
     <ul>
-        <p>Carro</p>
+        <h1>Carros Cadastrados</h1>
         <% carros.forEach(function(carro){ %>
+            <p>=================================</p>
             <h2>Modelo:</h2>
             <%=carro.modelo%>
             <h2>Fabricante:</h2>
@@ -15,7 +16,7 @@
             <h2>Imagem do Carro</h2>
             <%=carro.imagem%>
 
-            
+
         <% }); %>
     </ul>
 </div>
