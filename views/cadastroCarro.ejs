@@ -1,9 +1,29 @@
-    <form action="" method="POST">
-        <input type="text" name="modelo" placeholder="Modelo:"/>
-        <input type="text" name="fabricante" placeholder="Fabricante:"/>
-        <input type="text" name="ano" placeholder="Ano:"/>
-        <input type="text" name="placa" placeholder="Placa:"/>
-        <input type="text" name="numeroRenavam" placeholder="Numero do Renavam:"/>
-        <input type="text" name="imagem" placeholder="Url da imagem:"/>
-        <a href=""><button type="submit">Adicionar</button></a>
+<div style="display: flex; place-content: center;">
+    <form action="/enviarCarro" method="POST" >
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Modelo</label>
+            <input name="modelo" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fabricante</label>
+            <input name="fabricante" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Ano</label>
+            <input name="ano" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Placa</label>
+            <input name="placa" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Numero do Renavam</label>
+            <input name="numero_renavam" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Url da Imagem</label>
+            <input name="imagem" type="text" class="form-control" >
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
+</div>

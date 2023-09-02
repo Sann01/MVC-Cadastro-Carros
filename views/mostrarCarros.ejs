@@ -1,0 +1,21 @@
+<div>
+    <ul>
+        <p>Carro</p>
+        <% carros.forEach(function(carro){ %>
+            <h2>Modelo:</h2>
+            <%=carro.modelo%>
+            <h2>Fabricante:</h2>
+            <%=carro.fabricante%>
+            <h2>Ano:</h2>
+            <%=carro.ano%>
+            <h2>Placa:</h2>
+            <%=carro.placa%>
+            <h2>Numero Renavam:</h2>
+            <%=carro.numero_renavam%>
+            <h2>Imagem do Carro</h2>
+            <%=carro.imagem%>
+
+            
+        <% }); %>
+    </ul>
+</div>

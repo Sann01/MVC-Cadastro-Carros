@@ -9,6 +9,7 @@ const homeController = require("./controller/homeController");
 const listarController = require("./controller/listarController");
 // models
 const addUser = require('./models/usuarioModel');
+const Carro = require("./models/carroModel");
 
 const app = express();
 const port = 7000;
@@ -50,20 +51,32 @@ app.get('/login',(req,res)=>{
     app.set('layout','./layouts/default/login');
     loginController.getLogin(req,res);
 })
+app.post('/login', (req, res) => {
+    usuarioController.getLogin(req,res);
+});
 
 app.get('/home',(req,res)=>{
     app.set('layout','./layouts/default/home');
     homeController.getHome(req,res);
 })
-
-
-app.get('/listarCarro',(req,res)=>{
-    app.set('layout','./layouts/default/listar');
-    listarController.getListarCarro(req,res);
-    Carro.all({order:[['id','']]}).then(function(carros){
-        res.render("listar",{carros:carros});
+app.post('/home', (req, res) => {
+    app.set('layout','./layouts/default/home');
+    homeController.getHome(req,res);
+});
+app.post('/enviarCarro', function (req,res){
+    Carro.create({
+        modelo: req.body.modelo,
+        fabricante: req.body.fabricante,
+        ano: req.body.ano,
+        placa: req.body.placa,
+        numero_renavam: req.body.numero_renavam,
+        imagem: req.body.imagem
+    }).then(function(){
+        res.redirect('/mostrarCarros'); 
+    }).catch(function(error){
+        res.send("Erro ao cadastrar o carro: "+ error);
     })
-})
+});
 
 app.get('/deletar/:id',(req,res)=>{
     Carro.destroy({where:{'id':req.params.id}}).then(function(){
@@ -75,8 +88,9 @@ app.get('/deletar/:id',(req,res)=>{
     loginController.getLogin(req,res);
 })
 
-
-
-app.post('/login', (req, res) => {
-    usuarioController.getLogin(req,res);
+app.get('/mostrarCarros', function (req,res){
+    Carro.findAll().then(function(carros){
+        app.set('layout', './layouts/default/mostrarCarros');
+        res.render('layouts/default/mostrarCarros', {carros:carros});
+    });
 });

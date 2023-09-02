@@ -28,9 +28,4 @@ const Carro = database.sequelize.define('carros',{
     }
 })
 
-
-
-
-
-module.exports = {Carro};
-
+module.exports = Carro;
