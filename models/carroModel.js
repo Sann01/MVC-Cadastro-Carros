@@ -27,5 +27,10 @@ const Carro = database.sequelize.define('carros',{
         allowNull:false
     }
 })
+
+
+
+
+
 module.exports = {Carro};
 

@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
-app.use(session({secret:'cadastrocarro'}))
+app.use(session({secret:'MVCcadastrocarro'}))
 app.use(bodyParser.urlencoded({extended:true}));
 app.set('layouts', './layouts/default/index');
 
@@ -36,6 +36,10 @@ app.get('/cadastro',(req,res)=>{
     app.set('layout','./layouts/default/cadastro');
     cadastroController.getCadastroUsuario(req,res);
 })
+app.post('/cadastro', async (req, res) => {
+    cadastroController.cadastro(req, res);
+});
+
 
 app.get('/cadastroCarro', (req, res) => {
     app.set('layout','./layouts/default/cadastroCarro');
@@ -71,17 +75,8 @@ app.get('/deletar/:id',(req,res)=>{
     loginController.getLogin(req,res);
 })
 
-app.post('/cadastro', async (req, res) => {
-    cadastroController.cadastro(req, res);
-});
+
 
 app.post('/login', (req, res) => {
-    const { email, senha } = req.body;
-
-
-    if (email === 'usuario' && senha === 'senha') {
-        res.send('Login bem-sucedido');
-    } else {
-        res.send('Login falhou');
-    }
+    usuarioController.getLogin(req,res);
 });

@@ -1,5 +1,5 @@
 const login = [];
-const usuario = require("./models/usuarioModel");
+const usuario = require("../models/usuarioModel");
 function getLogin(req, res) {
     res.render("./layouts/default/login", { login });
 }
