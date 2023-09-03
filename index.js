@@ -2,20 +2,20 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const session = require('express-session');
 //controllers
-const cadastroCarroController = require("./controller/cadastroCarroController");
-const cadastroController = require("./controller/cadastroController");
-const loginController = require("./controller/loginController");
-const homeController = require("./controller/homeController");
-const listarController = require("./controller/listarController");
+const cadastroCarroController = require("./src/controller/cadastroCarroController");
+const cadastroController = require("./src/controller/cadastroController");
+const loginController = require("./src/controller/loginController");
+const homeController = require("./src/controller/homeController");
 // models
-const addUser = require('./models/usuarioModel');
-const Carro = require("./models/carroModel");
+const addUser = require('./src/models/usuarioModel');
+const Carro = require("./src/models/carroModel");
 
 const app = express();
 const port = 7000;
 const bodyParser = require('body-parser');
 var path = require('path');
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json())
 app.use(express.static('public'));
@@ -57,7 +57,7 @@ app.post('/login', (req, res) => {
 
 app.get('/home',(req,res)=>{
     app.set('layout','./layouts/default/home');
-    homeController.getHome(req,res);
+    homeController(req,res);
 })
 app.post('/home', (req, res) => {
     app.set('layout','./layouts/default/home');

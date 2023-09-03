@@ -1,6 +1,6 @@
 const cadastroCarro = [];
-const carroModel = require("../models/carroModel");
-let msg = "";
+const carroModel = require('../models/carroModel');
+let msg = " ";
 
 function getCadastroCarro(req, res) {
     res.render("cadastroCarro", { cadastroCarro });
@@ -16,7 +16,7 @@ async function deleteCarro(req,res){
     console.log(data)
     console.log("testDlete")
 
-    await carroModel.destroy({where:{nome:nome}})
+    await carroModel.destroy({where:{modelo:modelo}})
     .then(result=>{
         res.redirect("listar")
     }).catch(erro =>{
@@ -26,8 +26,7 @@ async function deleteCarro(req,res){
 
 async function addCarro(req,res){
     const data = req.body;
-
-    if(modelo == " " || fabricante == " " || ano == " " || placa == " " || numeroRenavam == " " ){
+    if(data.modelo == " " || data.fabricante == " " || data.ano == " " || data.placa == " " || data.numero_renavam == " " ){
         msg = " faz tudo po, coloca os valores";
         res.render("cadastroCarro", {msg});
     }else{
