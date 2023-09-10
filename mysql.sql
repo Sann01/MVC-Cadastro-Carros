@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `cadastro_carros` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `cadastro_carros`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: cadastro_carros
@@ -56,13 +54,13 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuarios` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `nome` varchar(255) DEFAULT NULL,
-    `email` varchar(255) DEFAULT NULL,
-    `senha` varchar(255) DEFAULT NULL,
-    `createdAt` datetime NOT NULL,
-    `updatedAt` datetime NOT NULL,
-    PRIMARY KEY (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,3 +81,5 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-09-10 14:25:55

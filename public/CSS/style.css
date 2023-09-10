@@ -4,3 +4,8 @@ h1{
 h2{
     font-weight: bold;
 }
+.error{
+    color: red;
+    background-color:transparent;
+    display: none;
+}

@@ -4,4 +4,4 @@ function getHome(req, res) {
     res.render("layouts/default/home", { home });
 }
 
-module.exports = getHome;
+module.exports = {getHome};

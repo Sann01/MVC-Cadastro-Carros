@@ -1,19 +1,23 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const session = require('express-session');
-//controllers
-const cadastroCarroController = require("./src/controller/cadastroCarroController");
-const cadastroController = require("./src/controller/cadastroController");
-const loginController = require("./src/controller/loginController");
-const homeController = require("./src/controller/homeController");
-// models
-const addUser = require('./src/models/usuarioModel');
-const Carro = require("./src/models/carroModel");
-
 const app = express();
 const port = 7000;
-const bodyParser = require('body-parser');
 var path = require('path');
+const bodyParser = require('body-parser');
+
+//controllers
+const cadastroCarroController = require("./controller/cadastroCarroController");
+const cadastroController = require("./controller/cadastroController");
+const loginController = require("./controller/loginController");
+const homeController = require("./controller/homeController");
+// models
+const addUser = require('./models/usuarioModel');
+const Carro = require('./models/carroModel');
+const usuario = express.Router();
+
+
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({extended: true }));
@@ -23,22 +27,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
 app.use(session({secret:'MVCcadastrocarro'}))
 app.use(bodyParser.urlencoded({extended:true}));
-app.set('layouts', './layouts/default/index');
+app.set('layout', './layouts/default/index');
+app.use('/usuarios', usuario);
 
 app.listen(port,()=>{
     console.log("Server running on: https://localhost:" + port);
 });
 // gets
 app.get('/', (req, res) => {
-    res.redirect('/cadastro'); 
+    res.redirect('/register'); 
 });
 
-app.get('/cadastro',(req,res)=>{
-    app.set('layout','./layouts/default/cadastro');
+app.get('/register',(req,res)=>{
+    app.set('layout','./layouts/default/register');
     cadastroController.getCadastroUsuario(req,res);
 })
-app.post('/cadastro', async (req, res) => {
-    cadastroController.cadastro(req, res);
+app.post('/register', (req, res) => {
+    cadastroController.auth(req,res);
 });
 
 
@@ -52,12 +57,12 @@ app.get('/login',(req,res)=>{
     loginController.getLogin(req,res);
 })
 app.post('/login', (req, res) => {
-    usuarioController.getLogin(req,res);
+    res.render("layouts/default/login");
 });
 
 app.get('/home',(req,res)=>{
     app.set('layout','./layouts/default/home');
-    homeController(req,res);
+    homeController.getHome(req,res);
 })
 app.post('/home', (req, res) => {
     app.set('layout','./layouts/default/home');
