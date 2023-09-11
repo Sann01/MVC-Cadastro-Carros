@@ -11,13 +11,13 @@ sequelize.authenticate().then(function(){
     console.log("Falha ao conectar com banco de dados:" + erro);
 })
 
-connection.query("DELETE FROM usuarios WHERE id = id", function(err,result){
-if(!err){
-    console.log("Usuario apagado com sucesso!");
-}else{
-    console.log("Erro, não foi possível apagar o usuário");
-}
-});
+//connection.query("DELETE FROM usuarios WHERE id = id", function(err,result){
+//if(!err){
+//    console.log("Usuario apagado com sucesso!");
+//}else{
+//    console.log("Erro, não foi possível apagar o usuário");
+//}
+//});
 
 module.exports = {
     Sequelize: Sequelize,
