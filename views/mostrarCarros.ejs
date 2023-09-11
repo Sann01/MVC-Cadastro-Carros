@@ -2,20 +2,19 @@
     <ul>
         <h1>Carros Cadastrados</h1>
         <% carros.forEach(function(carro){ %>
-            <p>=================================</p>
+            <div id="div-cadastrado">
+                <img id="imagem" src="/uploads/<%=carro.imagem%>" alt="">
             <h2>Modelo:</h2>
-            <%=carro.modelo%>
+            <p><%=carro.modelo%></p>
             <h2>Fabricante:</h2>
-            <%=carro.fabricante%>
+            <p><%=carro.fabricante%></p>
             <h2>Ano:</h2>
-            <%=carro.ano%>
+            <p><%=carro.ano%></p>
             <h2>Placa:</h2>
-            <%=carro.placa%>
+            <p><%=carro.placa%></p>
             <h2>Numero Renavam:</h2>
-            <%=carro.numero_renavam%>
-            <h2>Imagem do Carro</h2>
-            <%=carro.imagem%>
-
+            <p><%=carro.numero_renavam%></p>
+            </div>
         <% }); %>
     </ul>
 </div>

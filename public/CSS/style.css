@@ -9,3 +9,14 @@ h2{
     background-color:transparent;
     display: none;
 }
+#div-cadastrado{
+    background-color: black;
+    color: white;
+    border-radius: 10px ;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}
+#imagem{
+    min-width: 450px;
+}

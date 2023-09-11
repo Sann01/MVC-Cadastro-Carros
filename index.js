@@ -1,34 +1,35 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const session = require('express-session');
+const multer = require('multer');
 const app = express();
+const path = require('path');
 const port = 7000;
-var path = require('path');
 const bodyParser = require('body-parser');
-
+const upload = multer({dest:"./public/uploads"});
 //controllers
 const cadastroCarroController = require("./controller/cadastroCarroController");
 const cadastroController = require("./controller/cadastroController");
 const loginController = require("./controller/loginController");
 const homeController = require("./controller/homeController");
 // models
-const addUser = require('./models/usuarioModel');
 const Carro = require('./models/carroModel');
 const usuario = express.Router();
 
 
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('layout', './layouts/default/index');
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json())
-app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
 app.use(session({secret:'MVCcadastrocarro'}))
 app.use(bodyParser.urlencoded({extended:true}));
-app.set('layout', './layouts/default/index');
+app.use(express.static('public'));
+
 app.use('/usuarios', usuario);
+
 
 app.listen(port,()=>{
     console.log("Server running on: https://localhost:" + port);
@@ -43,9 +44,8 @@ app.get('/register',(req,res)=>{
     cadastroController.getCadastroUsuario(req,res);
 })
 app.post('/register', (req, res) => {
-    cadastroController.auth(req,res);
+    
 });
-
 
 app.get('/cadastroCarro', (req, res) => {
     app.set('layout','./layouts/default/cadastroCarro');
@@ -68,19 +68,8 @@ app.post('/home', (req, res) => {
     app.set('layout','./layouts/default/home');
     homeController.getHome(req,res);
 });
-app.post('/enviarCarro', function (req,res){
-    Carro.create({
-        modelo: req.body.modelo,
-        fabricante: req.body.fabricante,
-        ano: req.body.ano,
-        placa: req.body.placa,
-        numero_renavam: req.body.numero_renavam,
-        imagem: req.body.imagem
-    }).then(function(){
-        res.redirect('/mostrarCarros'); 
-    }).catch(function(error){
-        res.send("Erro ao cadastrar o carro: "+ error);
-    })
+app.post('/enviarCarro',upload.single("imagem"), function (req,res){
+    cadastroCarroController.getCarro(req,res);
 });
 
 app.get('/deletar/:id',(req,res)=>{
@@ -88,7 +77,7 @@ app.get('/deletar/:id',(req,res)=>{
         res.send("Carro deletado!")
         res.redirect('./layouts/default/mostrarCarros')
     }).catch(function(erro){
-        res.send("Este carro nao existe!")
+        res.send("Este carro não existe!")
     })
     loginController.getLogin(req,res);
 })

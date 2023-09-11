@@ -1,27 +1,40 @@
 const cadastroCarro = [];
-const carroModel = require('../models/carroModel');
+const Carro = require('../models/carroModel');
 
 function getCadastroCarro(req, res) {
     res.render("cadastroCarro", { cadastroCarro });
 }
 
-async function getCarro(req,res,next) {
-    const carros = await carroModel.findAll();
-    res.render("cadastroCarro",{carros});
-}
-
-async function deleteCarro(req,res){
-    const data = req.body;
-    console.log(data)
-    console.log("testDlete")
-
-    await carroModel.destroy({where:{modelo:modelo}})
-    .then(result=>{
-        res.redirect("listar")
-    }).catch(erro =>{
-        
+function getCarro(req,res){
+    Carro.create({
+        modelo: req.body.modelo,
+        fabricante: req.body.fabricante,
+        ano: req.body.ano,
+        placa: req.body.placa,
+        numero_renavam: req.body.numero_renavam,
+        imagem: req.file ? req.file.filename : null 
+    }).then(function(){
+        res.redirect('/mostrarCarros'); 
+        console.log("")
+    }).catch(function(error){
+        console.log("Erro ao cadastrar o carro: "+ error);
     })
 }
 
+// async function carroDelete(req, res) {
+//     const carroID = req.params.id;
+//     try {
+//         const deleted = await Pet.excluirPet(id_pet);
+//         if (deleted) {
+//             res.redirect("/pets");
+//         } else {
+//             res.status(404).send('Pet não encontrado.');
+//         }
+//     } catch (error) {
+//         console.log('Erro ao excluir o pet:', error);
+//         res.status(500).send('Erro ao excluir o pet.');
+//     }
+// }
 
-module.exports = {getCadastroCarro,getCarro,deleteCarro};
+
+module.exports = {getCadastroCarro,getCarro};

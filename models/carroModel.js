@@ -23,7 +23,7 @@ const Carro = database.sequelize.define('carros',{
         allowNull:false
     },
     imagem:{
-        type: database.Sequelize.STRING(400),
+        type: database.Sequelize.BLOB,
         allowNull:false
     }
 })
