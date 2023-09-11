@@ -14,8 +14,9 @@ function getCarro(req,res){
         numero_renavam: req.body.numero_renavam,
         imagem: req.file ? req.file.filename : null 
     }).then(function(){
+        console.log("Cadastrado com sucesso");
         res.redirect('/mostrarCarros'); 
-        console.log("")
+        
     }).catch(function(error){
         console.log("Erro ao cadastrar o carro: "+ error);
     })
