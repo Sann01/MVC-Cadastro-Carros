@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
-const sequelize =  new Sequelize('railway','root','UAjFzalmcoYd5v6h4pJl',{
-    host: 'containers-us-west-160.railway.app',
+const sequelize =  new Sequelize(process.env.DATABASE,process.env.USER,process.env.PASSWORD,{
+    host:process.env.HOST,
     dialect: 'mysql',
-    port:'7947',
-    url:'mysql://root:UAjFzalmcoYd5v6h4pJl@containers-us-west-160.railway.app:7947/railway'
-})
+    port:process.env.PORT,
+    url:process.env.URL_RAILWAY
+});
 sequelize.authenticate().then(function(){
     console.log("Conectado com o banco de dados");
 }).catch(function(erro){
