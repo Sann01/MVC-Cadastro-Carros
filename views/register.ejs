@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/CSS/style.css">
+
 <div id="background-body">
 
     <h1 class="h1-register" style="display: flex; place-content: center;">Bem-vindo ao NextCars</h1>
@@ -17,10 +17,7 @@
 
                 <div class="mb-3" class="input">
                     <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="text" class="form-control" placeholder="Email:" required>
-                    <div id="emailHelp" class="form-text" style="color:aliceblue;">Nós nunca enviaremos seu email a
-                        ninguém.</div>
-
+                    <input name="email" type="text" class="form-control" placeholder="Email:" required>
                 </div>
 
                 <div class="mb-3" class="input">
@@ -35,8 +32,12 @@
                         class="inp-register" required>
                 </div>
 
-                <div id="botao-cadastro">
-                    <button type="submit" class="btn">Cadastrar</button>
+                <div id="botao-cadastro"> 
+                    <div class="botao">
+                        <button type="submit" class="btn">Cadastrar</button>
+                    </div>
+                    
+                    <p>Já tem uma conta?<a href="/login" style="text-decoration: none;">Entrar</a></p>
                 </div>
 
             </form>

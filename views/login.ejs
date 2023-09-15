@@ -1,34 +1,34 @@
 <link rel="stylesheet" href="/CSS/login.css">
 <div id="background-login">
 
-    <h1 style="display: flex;place-content: center;">Entre para o time NextCars!</h1>
-    <div class="div-extern">
+    <h1 class="h1-register" style="display: flex; place-content: center;">Entre para o time NextCars</h1>
 
-    
     <div style="display: flex; place-content: center;" class="div-form-login">
-        <div id="div-login">
-        
-        <form action="/home" method="POST">
-            <h2>Login</h2>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input name="email" type="email" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" placeholder="Email:" required>
-            </div>
 
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Senha</label>
-                <input name="senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha:"
-                    required>
-            </div>
-            <div id="botao-login">
-                <button type="submit" class="btn">Entrar</button>
-            </div>
-            
-        </form>
+        <div id="div-login">
+
+            <form action="/home" method="POST">
+                <p class="cadastro-text" style="font-size:1.5em;display: flex; place-content: center;">Login</p>
+                <div class="mb-3" class="input">
+                    <label for="exampleInputPassword1" class="form-label">Email</label>
+                    <input name="email" type="text" class="form-control" placeholder="Email:" class="inp-register"
+                        required>
+                </div>
+
+                <div class="mb-3" class="input">
+                    <label for="exampleInputEmail1" class="form-label">Senha</label>
+                    <input name="senha" type="text" class="form-control" placeholder="Senha:" required>
+                </div>
+
+                <div id="botao-cadastro"> 
+                    <div class="botao">
+                        <button type="submit" class="btn">Entrar</button>
+                    </div>
+                    
+                    <p>Não possui uma conta?<a href="/register" style="text-decoration: none;">Criar conta</a></p>
+                </div>
+
+            </form>
         </div>
     </div>
-
-    </div>
-
 </div>

@@ -1,19 +1,24 @@
 const login = [];
 const AddUser = require("../models/usuarioModel");
 
-function getLogin(req, res) {
+async function getLogin(req, res) {
     res.render("layouts/default/login", { login });
 }
 
-function logar(req,res){
-    const {nome, email, senha, confirmSenha} = req.body;
-    const senhaBanco = AddUser.findOne({where:{senha}});
-    if(senha !=confirmSenha){
-        res.send("aaaaaaaaaaaa");
-    }
-    else if(senha == confirmSenha){
-        res.redirect('/home');
+async function logar(req, res) {
+    try {
+        const { senha } = req.body;
+        const usuario = await AddUser.findOne({ where: { senha } });
+
+        if (!usuario) {
+            res.send("A senha está incorreta");
+        } else {
+            res.redirect('/home');
+        }
+    } catch (error) {
+        console.error("Erro ao verificar a senha:", error);
+        res.status(500).send("Erro interno do servidor");
     }
 }
 
-module.exports = { getLogin,logar};
+module.exports = { getLogin, logar };

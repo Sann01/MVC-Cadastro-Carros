@@ -33,7 +33,12 @@ app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(expressLayouts);
-app.use(session({secret:'MVCcadastrocarro'}))
+app.use(session({ 
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.use('/usuarios', usuario);
@@ -55,7 +60,7 @@ app.get('/register',(req,res)=>{
     cadastroController.getCadastroUsuario(req,res);
 })
 app.post('/register', (req, res) => {
-    cadastroController.cadastrar(req,res);
+    
     res.redirect('/login');
 });
 
@@ -65,6 +70,7 @@ app.get('/login',(req,res)=>{
 })
 app.post('/login', (req, res) => {
     cadastroController.cadastrar(req,res);
+    res.redirect('/login');
 });
 
 app.get('/home',(req,res)=>{
@@ -95,15 +101,6 @@ app.get('/deletar/:id',(req,res)=>{
     }).catch(function(err){
         res.send("Este carro não existe!" + err)
     })
-})
-app.get('/editar/:id',(req,res)=>{
-    Carro.findOne({where:{'id':req.params.id}}).then((carros)=>{
-
-    }).catch((err)=>{
-        console.log("Erro ao carregar o formulario de edicao"+err);
-        res.redirect('/mostrarCarros');
-    })
-    res.redirect('/layouts/default/editarInformacao');
 })
 
 

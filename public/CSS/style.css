@@ -1,76 +1,23 @@
-h1{
-    font-weight: bolder;
+input.form-control{
+    border: solid 1px #790202;
 }
-h2{
-    font-weight: bold;
+#background-login{
+    justify-content: center;
 }
-.error{
-    color: red;
-    background-color:transparent;
-    display: none;
+p.cadastro-text{
+    color: #790202;
 }
-
-#div-cadastrado{
-    background-color: black;
-    color: white;
-    border-radius: 10px ;
-    text-align: center;
-    padding: 5px;
-    margin: 10px;
-}
-#imagem{
-    min-width: 450px;
-}
-#div-register{
-    width: 30vw;
-    height: 75vh;
-    color:white;
-    backdrop-filter: blur(20px);
-    border: solid 4px #cc2424;
-    border-radius: 10px;
-    display: flex; place-content: center;
-}
-
-body{
-    background-image: url(/images/Lamborghini\ SC18\ Interaction.gif);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.form-control{
-    border: 0;
-    border-bottom: 1px solid black;
-    border:solid 1px rgb(0, 0, 0);
-    width: 20vw;
-    background-color: transparent;
-    border-radius: 5px;
-    color: whitesmoke;
-    height: 100%;
-}
-.form-control::placeholder{
-    color: aliceblue;
-}
-.form-label{
-    color: #cc2424;
-}
-#botao-cadastro{
-    text-align: center;   
-}
-.h1-register{
-    color: #cc2424;
-}
-.cadastro-text{
-    color: #cc2424;
-    font-weight:bold ;
-}
-#emailHelp{
-    color: #cc2424;
+h1.h1-register{
+    color: #790202;
 }
 .btn{
-    background-color: transparent;
-    border: solid 1px #cc2424;
-    color: white;
+    border: solid 1px #790202;
+    
 }
 .btn:hover{
-    background-color: #cc2424;
-    color: black;
+    background-color: #790202;
+    color: white;
+}
+.botao{
+    text-align: ;
 }

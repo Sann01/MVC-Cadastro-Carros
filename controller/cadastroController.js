@@ -17,7 +17,6 @@ async function cadastrar(req, res) {
         } else {
 
             if (senha != confirmSenha) {
-                res.status(400).json("A senha está incorreta");
                 res.redirect("/register");
             }
             else if (senha == confirmSenha) {

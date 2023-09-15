@@ -2,23 +2,36 @@
     <ul>
         <h1>Carros Cadastrados</h1>
         <% carros.forEach(function(carro){ %>
-            <div id="div-cadastrado">
-                <img id="imagem" src="/uploads/<%=carro.imagem%>" alt="">
-            <h2>Modelo:</h2>
-            <p><%=carro.modelo%></p>
-            <h2>Fabricante:</h2>
-            <p><%=carro.fabricante%></p>
-            <h2>Ano:</h2>
-            <p><%=carro.ano%></p>
-            <h2>Placa:</h2>
-            <p><%=carro.placa%></p>
-            <h2>Numero Renavam:</h2>
-            <p><%=carro.numero_renavam%></p>
+            <div id="carros">
+                <div>
+                    <img id="imagem" src="/uploads/<%=carro.imagem%>" alt="">
+                </div>
+            <div class="item">
+                <h2>Modelo:</h2>
+                <p><%=carro.modelo%></p>
+            </div>
+            <div class="item">
+                <h2>Fabricante:</h2>
+                <p><%=carro.fabricante%></p>
+            </div>
+            <div class="item">
+                <h2>Ano:</h2>
+                <p><%=carro.ano%></p>
+            </div>
+            <div class="item">
+                <h2>Placa:</h2>
+                <p><%=carro.placa%></p>
+            </div>
+            <div class="item">
+                <h2>Numero Renavam:</h2>
+                <p><%=carro.numero_renavam%></p>
+            </div>
             
-            <a class="btn-slice" href="/deletar/<%=carro.id%>">
-                <button type="button" class="btn btn-outline-danger">Deletar</button>
-            </a>
-            <a href="/editar/<%=carro.id%>"><button type="button" class="btn btn-outline-success">Editar</button></a>
+            <div class="buttons">
+                <a class="btn-slice" href="/deletar/<%=carro.id%>">
+                    <button type="button" class="btn btn-outline-danger">Deletar</button>
+                </a>
+            </div>
             </div>
             
         <% }); %>

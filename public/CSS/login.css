@@ -1,66 +1,51 @@
-h1{
-    font-weight: bolder;
-    color: #2aa0af;
+input.form-control{
+    border: solid 1px #790202;
 }
-h2{
-    font-weight: bold;
-    color: #2aa0af;
-    font-size: 1.5em;
-    text-align: center;
+#background-login{
+    justify-content: center;
 }
-.div-form-login{
-    width: 30vw;
-    height: 44vh;
-    color:white;
-    backdrop-filter: blur(20px);
-    border: solid 4px #2aa0af;
-    border-radius: 10px;
-    margin-top: 5%;
+p.cadastro-text{
+    color: #790202;
 }
-body{
-    background-image: url(../images/aston_valkyries.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-}
-.div-extern{
-    display: flex;
-        place-content: center;
-}
-.form-control{
-    border: 0;
-    border-bottom: 1px solid black;
-    border:solid 1px rgb(0, 0, 0);
-    width: 20vw;
-    background-color: transparent;
-    border-radius: 5px;
-    color: whitesmoke;
-}
-.form-control::placeholder{
-    color: aliceblue;
-}
-.form-label{
-    color: #2aa0af;
-}
-#botao-login{
-    text-align: center;   
-}
-.h1-register{
-    color: #2aa0af;
-}
-.cadastro-text{
-    color: #2aa0af;
-    font-weight:bold ;
-}
-#emailHelp{
-    color: #2aa0af;
+h1.h1-register{
+    color: #790202;
 }
 .btn{
-    background-color: transparent;
-    border: solid 1px #2aa0af;
-    color: white;
+    border: solid 1px #790202;
+    
 }
 .btn:hover{
-    background-color: #2aa0af;
-    color: black;
+    background-color: #790202;
+    color: white;
+}
+.botao{
+    text-align: ;
+}
+
+
+
+
+
+input.form-control{
+    border: solid 1px #790202;
+}
+#background-login{
+    justify-content: center;
+}
+p.cadastro-text{
+    color: #790202;
+}
+h1.h1-register{
+    color: #790202;
+}
+.btn{
+    border: solid 1px #790202;
+    
+}
+.btn:hover{
+    background-color: #790202;
+    color: white;
+}
+.botao{
+    text-align: center;
 }

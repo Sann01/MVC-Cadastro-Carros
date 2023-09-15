@@ -15,4 +15,4 @@ const AddUser = database.sequelize.define('usuarios',{
     }
 })
 
-module.exports = AddUser,Sequelize;
+module.exports = AddUser;
