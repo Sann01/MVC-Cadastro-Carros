@@ -14,7 +14,13 @@
             <p><%=carro.placa%></p>
             <h2>Numero Renavam:</h2>
             <p><%=carro.numero_renavam%></p>
+            
+            <a class="btn-slice" href="/deletar/<%=carro.id%>">
+                <button type="button" class="btn btn-outline-danger">Deletar</button>
+            </a>
+            <a href="/editar/<%=carro.id%>"><button type="button" class="btn btn-outline-success">Editar</button></a>
             </div>
+            
         <% }); %>
     </ul>
 </div>

@@ -1,28 +1,45 @@
-<h1 style="display: flex; place-content: center;">Bem-vindo ao NextCars</h1>
-<p class="cadastro-text" style="display: flex; place-content: center;">Faça seu cadastro!</p>
-<div style="display: flex; place-content: center;" class="div-form-cadastro">
 <link rel="stylesheet" href="/CSS/style.css">
-<form action="/login" method="POST">
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Nome</label>
-        <input name="nome" type="text" class="form-control" class="input-register" placeholder="Nome:">
-    </div>
+<div id="background-body">
 
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input name="email" type="email" class="form-control" class="input-register" aria-describedby="emailHelp" placeholder="Email:" required>
-        <div id="emailHelp" class="form-text">Nós nunca enviaremos seu email a ninguém.</div>
-        
-    </div>
+    <h1 class="h1-register" style="display: flex; place-content: center;">Bem-vindo ao NextCars</h1>
 
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Senha</label>
-        <input name="senha" type="password" class="form-control" class="input-register" placeholder="Senha:" required>
-    </div>
+    <div style="display: flex; place-content: center;" class="div-form-cadastro">
 
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Confirmar Senha</label>
-        <input name="confirmSenha" type="password" class="form-control" class="input-register" placeholder="Confirmar Senha:" required>
+        <div id="div-register">
+
+            <form action="/login" method="POST">
+                <p class="cadastro-text" style="font-size:1.5em;display: flex; place-content: center;">Cadastro</p>
+                <div class="mb-3" class="input">
+                    <label for="exampleInputPassword1" class="form-label">Nome</label>
+                    <input name="nome" type="text" class="form-control" placeholder="Nome:" class="inp-register"
+                        required>
+                </div>
+
+                <div class="mb-3" class="input">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="text" class="form-control" placeholder="Email:" required>
+                    <div id="emailHelp" class="form-text" style="color:aliceblue;">Nós nunca enviaremos seu email a
+                        ninguém.</div>
+
+                </div>
+
+                <div class="mb-3" class="input">
+                    <label for="exampleInputPassword1" class="form-label">Senha</label>
+                    <input name="senha" type="password" class="form-control" placeholder="Senha:" class="inp-register"
+                        required>
+                </div>
+
+                <div class="mb-3" class="input">
+                    <label for="exampleInputPassword1" class="form-label">Confirmar Senha</label>
+                    <input name="confirmSenha" type="password" class="form-control" placeholder="Senha:"
+                        class="inp-register" required>
+                </div>
+
+                <div id="botao-cadastro">
+                    <button type="submit" class="btn">Cadastrar</button>
+                </div>
+
+            </form>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button></form>
 </div>

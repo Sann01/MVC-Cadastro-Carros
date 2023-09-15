@@ -4,31 +4,42 @@ const AddUser = require("../models/usuarioModel");
 function getCadastroUsuario(req, res) {
     res.render('layouts/default/register', { cadastroUsuario });
 }
-function auth (req,res){
-    
-const senha = req.body.senha;
-const confirmSenha = req.body.confirmSenha;
 
-    if(senha != confirmSenha){
-    res.redirect("layouts/default/register");
-} 
-else if(req.body.senha == req.body.confirmSenha){
-    res.redirect("layouts/default/login");
-    res.render("layouts/default/login");
-    AddUser.create({
-        nome:req.body.nome,
-        email:req.body.email,
-        senha:req.body.senha,
-        confirmSenha:req.body.confirmSenha
-    }).then(function(){
-        console.log("Cadastrado com sucesso!");
-        res.redirect('/login');
-    }).catch(function(error){
-        console.log("Erro ao efetuar o cadastro" + error); 
-    })
+async function cadastrar(req, res) {
+
+    try {
+        const {nome, email, senha, confirmSenha} = req.body;
+
+        const user = await AddUser.findOne({ where: { email } })
+
+        if (user) {
+            res.status(200).json({ message: "email ja cadastrado" })
+        } else {
+
+            if (senha != confirmSenha) {
+                res.status(400).json("A senha está incorreta");
+                res.redirect("/register");
+            }
+            else if (senha == confirmSenha) {
+                AddUser.create({
+                    nome,
+                    email,
+                    senha
+                }).then(function () {
+                    console.log("Cadastrado com sucesso");
+                    res.redirect('/login');
+                }).catch(function (error) {
+                    console.log("Erro ao cadastrar pesosa: " + error);
+                })
+            }
+        }
+    } catch (err) {
+        console.error("Erro ao cadastrar pessoa: " + err);
+        res.status(500).json({ error: "Erro interno do servidor" });
+    }
+
+
 }
-}
-//const usuario = await AddUser.email(email);
 
 
-module.exports = {getCadastroUsuario, auth};
+module.exports = {getCadastroUsuario,cadastrar};

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/CSS/style.css">
+<div style="display: flex; place-content: center;">
+
+    <form action="/enviarCarro" enctype="multipart/form-data" accept="image/*" method="POST" >
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Modelo</label>
+            <input name="modelo" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Fabricante</label>
+            <input name="fabricante" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Ano</label>
+            <input name="ano" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Placa</label>
+            <input name="placa" type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Numero do Renavam</label>
+            <input name="numero_renavam" type="text" class="form-control" >
+        </div>
+        <div class="mb-3 upload-img">
+            <input type="file" name="imagem" accept="image/*" id="upfile">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>

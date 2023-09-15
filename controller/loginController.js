@@ -1,30 +1,19 @@
 const login = [];
-const Usuario = require("../models/usuarioModel");
+const AddUser = require("../models/usuarioModel");
 
 function getLogin(req, res) {
     res.render("layouts/default/login", { login });
 }
-function msg (req,res){
 
+function logar(req,res){
+    const {nome, email, senha, confirmSenha} = req.body;
+    const senhaBanco = AddUser.findOne({where:{senha}});
+    if(senha !=confirmSenha){
+        res.send("aaaaaaaaaaaa");
+    }
+    else if(senha == confirmSenha){
+        res.redirect('/home');
+    }
 }
 
-function logar (req,res){
-    if(req.body.senha != req.body.confirmSenha){
-    res.redirect("layouts/default/");
-    
-} 
-else if(req.body.senha == req.body.confirmSenha){
-    res.redirect("layouts/default/login");
-    Usuario.create({
-        nome:req.body.nome,
-        email:req.body.email,
-        senha:req.body.senha
-    }).then(function(){
-
-    }).catch(function(error){
-        res.render
-    })
-}
-}
-
-module.exports = {getLogin};
+module.exports = { getLogin,logar};

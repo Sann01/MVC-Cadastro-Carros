@@ -1,0 +1,14 @@
+h1{
+    font-weight: bolder;
+    color: aliceblue;
+    margin: 10px;
+    text-align: center;
+}
+h2{
+    font-weight: bold;
+}
+body{
+    background-image: url(/images/supraInHighway.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

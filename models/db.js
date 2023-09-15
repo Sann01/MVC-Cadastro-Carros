@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
-const sequelize =  new Sequelize(process.env.DATABASE,process.env.USER,process.env.PASSWORD,{
-    host:process.env.HOST,
+const sequelize =  new Sequelize(process.env.DB_DATABASE,process.env.DB_USER,process.env.DB_PASSWORD,{
+    host:process.env.DB_HOST,
     dialect: 'mysql',
-    port:process.env.PORT,
-    url:process.env.URL_RAILWAY
+    port:process.env.DB_PORT,
+    url:process.env.DB_URL_RAILWAY
 });
 sequelize.authenticate().then(function(){
     console.log("Conectado com o banco de dados");
